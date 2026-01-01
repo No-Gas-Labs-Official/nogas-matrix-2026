@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Discover 65+ gasless mini-apps on Base & Farcaster - No_Gas_Labs™ Mini-App Matrix (2026 Scout Edition)">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" type="image/png" href="/matrix-preview.png">
+    <link rel="apple-touch-icon" href="/matrix-preview.png">
+    
+    <!-- Farcaster Frame Meta Tags -->
+    <meta property="fc:frame" content="vNext">
+    <meta property="fc:frame:image" content="https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png">
+    <meta property="fc:frame:image:aspect_ratio" content="1:1">
+    <meta property="fc:frame:post_url" content="https://no-gas-labs-official.github.io/nogas-matrix-2026">
+    <meta property="fc:frame:button:1" content="Open Matrix 🚀">
+    <meta property="fc:frame:button:1:action" content="link">
+    <meta property="fc:frame:button:1:target" content="https://no-gas-labs-official.github.io/nogas-matrix-2026">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="No_Gas_Labs™ Mini-App Matrix 2026">
+    <meta property="og:description" content="Discover 65+ gasless mini-apps on Base & Farcaster">
+    <meta property="og:image" content="https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png">
+    <meta property="og:url" content="https://no-gas-labs-official.github.io/nogas-matrix-2026">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="No_Gas_Labs™ Mini-App Matrix 2026">
+    <meta name="twitter:description" content="Discover 65+ gasless mini-apps on Base & Farcaster">
+    <meta name="twitter:image" content="https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png">
+    
+    <title>No_Gas_Labs™ Matrix 2026 | Gasless Mini-Apps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --accent-primary: #00ff99;
+            --accent-secondary: #ff66ff;
+            --accent-tertiary: #00ccff;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+            --border-color: #333333;
+            --success: #00ff99;
+            --warning: #ffcc00;
+            --error: #ff4444;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 2px solid var(--accent-primary);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 153, 0.3);
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .stat {
+            background: var(--bg-tertiary);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .search-container {
+            margin-bottom: 40px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.2);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-secondary);
+            box-shadow: 0 0 30px rgba(255, 102, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 2px solid var(--accent-primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+        
+        .category {
+            margin-bottom: 60px;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-tertiary);
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-tertiary);
+        }
+        
+        .category-count {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .app-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 40px rgba(0, 255, 153, 0.1);
+        }
+        
+        .app-card:hover::before {
+            opacity: 1;
+        }
+        
+        .app-card.visited {
+            border-color: var(--success);
+            background: rgba(0, 255, 153, 0.05);
+        }
+        
+        .app-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .app-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .app-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+        
+        .tag.gasless {
+            background: rgba(0, 255, 153, 0.1);
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+        
+        .tag.farcaster {
+            background: rgba(255, 102, 255, 0.1);
+            color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+        }
+        
+        .app-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .app-link {
+            flex: 1;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            min-width: 120px;
+        }
+        
+        .app-link.primary {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+        
+        .app-link.primary:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .app-link.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .app-link.secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+        
+        .visited-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            background: var(--success);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 2px solid var(--border-color);
+            margin-top: 60px;
+            color: var(--text-muted);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .progress-section {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid var(--accent-primary);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 50px rgba(0, 255, 153, 0.2);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-primary);
+        }
+        
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat {
+                padding: 10px 15px;
+                flex: 1 1 140px;
+            }
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        .neon-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
+            }
+            50% {
+                opacity: 0.7;
+                text-shadow: 0 0 40px rgba(0, 255, 153, 0.8);
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="neon-pulse">No_Gas_Labs™ Matrix</h1>
+            <p class="subtitle">2026 Scout Edition | Discover Gasless Mini-Apps</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="totalApps">65+</div>
+                    <div class="stat-label">Total Apps</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="gaslessApps">65+</div>
+                    <div class="stat-label">Gasless</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="farcasterApps">40+</div>
+                    <div class="stat-label">Farcaster</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="visitedApps">0</div>
+                    <div class="stat-label">Visited</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search mini-apps, protocols, or keywords...">
+                <button class="btn btn-primary" onclick="searchApps()">Search</button>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-title">🎯 Your Progress</span>
+                <button class="btn btn-secondary" onclick="openAllApps()">Open All Unvisited</button>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <div class="progress-stats">
+                <span id="progressText">0 of 65 apps explored (0%)</span>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 0.8rem;" onclick="resetProgress()">Reset</button>
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">💬 Social & Communication</h2>
+                <span class="category-count">15 apps</span>
+            </div>
+            <div class="app-grid" id="socialApps">
+                <!-- Social apps will be rendered here -->
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">🎮 Gaming & Entertainment</h2>
+                <span class="category-count">12 apps</span>
+            </div>
+            <div class="app-grid" id="gamingApps">
+                <!-- Gaming apps will be rendered here -->
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">💰 DeFi & Finance</h2>
+                <span class="category-count">18 apps</span>
+            </div>
+            <div class="app-grid" id="defiApps">
+                <!-- DeFi apps will be rendered here -->
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">🎨 Creator Tools</h2>
+                <span class="category-count">10 apps</span>
+            </div>
+            <div class="app-grid" id="creatorApps">
+                <!-- Creator apps will be rendered here -->
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">🛠️ Utilities & Tools</h2>
+                <span class="category-count">10 apps</span>
+            </div>
+            <div class="app-grid" id="utilityApps">
+                <!-- Utility apps will be rendered here -->
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 60px 0;">
+            <button class="btn btn-primary" onclick="shareOnWarpcast()">📤 Share on Warpcast</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/No-Gas-Labs-Official/nogas-matrix-2026" class="footer-link">GitHub Repository</a>
+            <a href="https://warpcast.com/~/developers/frames" class="footer-link">Frame Validator</a>
+            <a href="https://base.org" class="footer-link">Base Network</a>
+            <a href="https://farcaster.xyz" class="footer-link">Farcaster</a>
+        </div>
+        <p>Curated by Damien Featherstone | No_Gas_Labs™ | #00ff99 | 2026</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Built with ❤️ for the gasless future</p>
+    </footer>
+
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2 class="modal-title">🚀 Welcome to the Matrix</h2>
+            <p class="modal-text">
+                Explore 65+ gasless mini-apps on Base and Farcaster. Mark apps as visited to track your progress through the ecosystem. The Neon Pulse awaits!
+            </p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="closeModal()">Start Exploring</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App Data
+        const apps = {
+            social: [
+                { name: "Farcaster", description: "Decentralized social protocol for building social applications", url: "https://warpcast.com", tags: ["farcaster", "social"], gasless: true },
+                { name: "Warpcast", description: "The flagship Farcaster client for decentralized social networking", url: "https://warpcast.com", tags: ["farcaster", "social"], gasless: true },
+                { name: "Supercast", description: "Farcaster client with enhanced discovery and community features", url: "https://supercast.xyz", tags: ["farcaster", "social"], gasless: true },
+                { name: "Jam", description: "Modern Farcaster client focused on UX and developer experience", url: "https://jam.so", tags: ["farcaster", "social"], gasless: true },
+                { name: "Paragraph", description: "Web3 publishing platform for creators and communities", url: "https://paragraph.xyz", tags: ["creator", "social"], gasless: true },
+                { name: "Orb", description: "Farcaster client with beautiful design and powerful features", url: "https://orb.fyi", tags: ["farcaster", "social"], gasless: true },
+                { name: "Outcast", description: "Farcaster discovery and analytics platform", url: "https://outcast.xyz", tags: ["farcaster", "social"], gasless: true },
+                { name: "Searchcaster", description: "Search engine for the Farcaster network", url: "https://searchcaster.xyz", tags: ["farcaster", "social"], gasless: true },
+                { name: "Neynar", description: "Developer platform for building Farcaster applications", url: "https://neynar.com", tags: ["farcaster", "developer"], gasless: true },
+                { name: "Airstack", description: "Web3 developer platform with Farcaster GraphQL API", url: "https://airstack.xyz", tags: ["farcaster", "developer"], gasless: true },
+                { name: "Base Names", description: "Easily claim and manage your .base name", url: "https://base.org/names", tags: ["base", "identity"], gasless: true },
+                { name: "Coinbase Smart Wallet", description: "Next-gen wallet with account abstraction built-in", url: "https://www.coinbase.com/smart-wallet", tags: ["wallet", "base"], gasless: true },
+                { name: "Safe", description: "Smart contract wallet for secure asset management", url: "https://safe.global", tags: ["wallet", "security"], gasless: true },
+                { name: "Biconomy", description: "Account abstraction infrastructure for gasless transactions", url: "https://www.biconomy.io", tags: ["infrastructure", "gasless"], gasless: true },
+                { name: "Pimlico", description: "ERC-4337 bundler and paymaster infrastructure", url: "https://pimlico.io", tags: ["infrastructure", "gasless"], gasless: true }
+            ],
+            gaming: [
+                { name: "Fantasy", description: "Fantasy sports on Farcaster with real rewards", url: "https://fantasy.top", tags: ["farcaster", "gaming"], gasless: true },
+                { name: "Farcade", description: "Arcade-style games built on Farcaster", url: "https://farcade.xyz", tags: ["farcaster", "gaming"], gasless: true },
+                { name: "Blockus", description: "Multiplayer puzzle games on Base", url: "https://blockus.xyz", tags: ["base", "gaming"], gasless: true },
+                { name: "Playdegens", description: "Gaming platform with leaderboards and competitions", url: "https://playdegens.com", tags: ["gaming", "base"], gasless: true },
+                { name: "Gamercoin", description: "Rewards platform for gamers on Base", url: "https://gamercoin.com", tags: ["gaming", "rewards"], gasless: true },
+                { name: "Chain Reaction", description: "Strategy game with on-chain scoring", url: "https://chainreaction.game", tags: ["gaming", "strategy"], gasless: true },
+                { name: "Wordle on Base", description: "Classic word game with on-chain solutions", url: "https://wordle.base.org", tags: ["base", "gaming"], gasless: true },
+                { name: "Farcaster Trivia", description: "Trivia contests with Farcaster integration", url: "https://trivia.farcaster", tags: ["farcaster", "gaming"], gasless: true },
+                { name: "Base Quests", description: "Gamified exploration of the Base ecosystem", url: "https://quests.base.org", tags: ["base", "gaming"], gasless: true },
+                { name: "Pixel Wars", description: "Collaborative pixel art canvas on-chain", url: "https://pixelwars.xyz", tags: ["gaming", "nft"], gasless: true },
+                { name: "Crypto Cards", description: "Trading card game on Base", url: "https://cryptocards.xyz", tags: ["gaming", "nft"], gasless: true },
+                { name: "Degen Detectives", description: "Mystery solving game with on-chain clues", url: "https://degen detectives.xyz", tags: ["farcaster", "gaming"], gasless: true }
+            ],
+            defi: [
+                { name: "Uniswap", description: "Leading DEX with gasless swaps via paymasters", url: "https://uniswap.org", tags: ["defi", "swap"], gasless: true },
+                { name: "1inch", description: "DEX aggregator with best route finding", url: "https://1inch.io", tags: ["defi", "swap"], gasless: true },
+                { name: "CowSwap", description: "MEV-protected DEX with batch auctions", url: "https://cowswap.com", tags: ["defi", "swap"], gasless: true },
+                { name: "Base Swap", description: "Native DEX on Base with low fees", url: "https://baseswap.fi", tags: ["base", "defi"], gasless: true },
+                { name: "Compound", description: "Lending protocol with support for Base", url: "https://compound.finance", tags: ["defi", "lending"], gasless: true },
+                { name: "Aave", description: "Leading lending protocol on Base", url: "https://aave.com", tags: ["defi", "lending"], gasless: true },
+                { name: "Rocket Pool", description: "Decentralized ETH staking", url: "https://rocketpool.net", tags: ["defi", "staking"], gasless: true },
+                { name: "Lido", description: "Liquid staking protocol", url: "https://lido.fi", tags: ["defi", "staking"], gasless: true },
+                { name: "Perpetual Protocol", description: "Perpetual futures DEX on Base", url: "https://perp.com", tags: ["defi", "trading"], gasless: true },
+                { name: "GMX", description: "Decentralized perpetual exchange", url: "https://gmx.io", tags: ["defi", "trading"], gasless: true },
+                { name: "Curve", description: "Stablecoin DEX with low slippage", url: "https://curve.fi", tags: ["defi", "swap"], gasless: true },
+                { name: "Balancer", description: "Customizable AMM with multi-asset pools", url: "https://balancer.fi", tags: ["defi", "swap"], gasless: true },
+                { name: "Yearn", description: "Yield aggregation vaults", url: "https://yearn.finance", tags: ["defi", "yield"], gasless: true },
+                { name: "Convex", description: "Curve yield optimization", url: "https://convexfinance.com", tags: ["defi", "yield"], gasless: true },
+                { name: "Sushi", description: "Multi-chain DEX with Base support", url: "https://sushi.com", tags: ["defi", "swap"], gasless: true },
+                { name: "KyberSwap", description: "DEX aggregator with advanced routing", url: "https://kyberswap.com", tags: ["defi", "swap"], gasless: true },
+                { name: "Matcha", description: "DEX aggregator by 0x Labs", url: "https://matcha.xyz", tags: ["defi", "swap"], gasless: true },
+                { name: "Jupiter", description: "Leading DEX aggregator (Base coming soon)", url: "https://jup.ag", tags: ["defi", "swap"], gasless: true }
+            ],
+            creator: [
+                { name: "Zora", description: "NFT marketplace for creators on Base", url: "https://zora.co", tags: ["nft", "creator"], gasless: true },
+                { name: "Mint Club", description: "Mint tokens and NFTs with no coding", url: "https://mint.club", tags: ["creator", "nft"], gasless: true },
+                { name: "Mirror", description: "Web3 publishing platform for writers", url: "https://mirror.xyz", tags: ["creator", "writing"], gasless: true },
+                { name: "Thirdweb", description: "Build web3 apps with simple SDKs", url: "https://thirdweb.com", tags: ["developer", "creator"], gasless: true },
+                { name: "Manifold", description: "Creator studio for NFT artists", url: "https://manifold.xyz", tags: ["nft", "creator"], gasless: true },
+                { name: "Sound", description: "Music NFT platform for artists", url: "https://sound.xyz", tags: ["nft", "music"], gasless: true },
+                { name: "Royal", description: "Music royalties marketplace", url: "https://royal.io", tags: ["nft", "music"], gasless: true },
+                { name: "Highlight", description: "NFT marketplace with creator tools", url: "https://highlight.xyz", tags: ["nft", "creator"], gasless: true },
+                { name: "Nifty Gateway", description: "Premium NFT marketplace", url: "https://niftygateway.com", tags: ["nft", "creator"], gasless: true },
+                { name: "OpenSea", description: "Largest NFT marketplace with Base support", url: "https://opensea.io", tags: ["nft", "creator"], gasless: true }
+            ],
+            utility: [
+                { name: "Etherscan", description: "Block explorer and analytics platform", url: "https://etherscan.io", tags: ["utility", "explorer"], gasless: true },
+                { name: "BaseScan", description: "Base network block explorer", url: "https://basescan.org", tags: ["base", "explorer"], gasless: true },
+                { name: "DeFi Llama", description: "DeFi analytics and TVL tracking", url: "https://defillama.com", tags: ["utility", "analytics"], gasless: true },
+                { name: "L2Beat", description: "Layer 2 scaling analytics", url: "https://l2beat.com", tags: ["utility", "analytics"], gasless: true },
+                { name: "Dune Analytics", description: "Blockchain data visualization platform", url: "https://dune.com", tags: ["utility", "analytics"], gasless: true },
+                { name: "Nansen", description: "On-chain analytics platform", url: "https://nansen.ai", tags: ["utility", "analytics"], gasless: true },
+                { name: "CoinGecko", description: "Cryptocurrency price tracking", url: "https://coingecko.com", tags: ["utility", "price"], gasless: true },
+                { name: "CoinMarketCap", description: "Crypto market capitalization tracker", url: "https://coinmarketcap.com", tags: ["utility", "price"], gasless: true },
+                { name: "WalletConnect", description: "Open protocol for connecting wallets", url: "https://walletconnect.com", tags: ["utility", "wallet"], gasless: true },
+                { name: "Rainbow", description: "Beautiful wallet for Ethereum and Base", url: "https://rainbow.me", tags: ["wallet", "base"], gasless: true }
+            ]
+        };
+
+        // State Management
+        let visitedApps = JSON.parse(localStorage.getItem('ngl_visited_apps') || '[]');
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAllApps();
+            updateProgress();
+            
+            // Show welcome modal for first-time visitors
+            if (!localStorage.getItem('ngl_welcome_shown')) {
+                document.getElementById('welcomeModal').classList.add('active');
+                localStorage.setItem('ngl_welcome_shown', 'true');
+            }
+            
+            // Register service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then(reg => {
+                    console.log('Service Worker registered');
+                }).catch(err => {
+                    console.log('Service Worker registration failed', err);
+                });
+            }
+        });
+        
+        // Render Apps
+        function renderAllApps() {
+            Object.keys(apps).forEach(category => {
+                renderApps(category, apps[category]);
+            });
+        }
+        
+        function renderApps(category, appList) {
+            const container = document.getElementById(category + 'Apps');
+            if (!container) return;
+            
+            container.innerHTML = appList.map(app => createAppCard(app, category)).join('');
+        }
+        
+        function createAppCard(app, category) {
+            const isVisited = visitedApps.includes(app.name);
+            const visitedBadge = isVisited ? '<span class="visited-badge">✓ Visited</span>' : '';
+            const visitedClass = isVisited ? 'visited' : '';
+            
+            return `
+                <div class="app-card ${visitedClass}" id="app-${app.name.replace(/\s+/g, '-')}">
+                    <h3 class="app-name">${app.name}</h3>
+                    <p class="app-description">${app.description}</p>
+                    <div class="app-tags">
+                        ${app.tags.map(tag => `<span class="tag ${tag}">${tag}</span>`).join('')}
+                    </div>
+                    <div class="app-actions">
+                        <a href="${app.url}" target="_blank" class="app-link primary" onclick="markVisited('${app.name}')">Open App</a>
+                        <button class="app-link secondary" onclick="markVisited('${app.name}')">Mark Visited</button>
+                    </div>
+                    <div style="margin-top: 10px;">${visitedBadge}</div>
+                </div>
+            `;
+        }
+        
+        // Mark App as Visited
+        function markVisited(appName) {
+            if (!visitedApps.includes(appName)) {
+                visitedApps.push(appName);
+                localStorage.setItem('ngl_visited_apps', JSON.stringify(visitedApps));
+                
+                // Update UI
+                const appId = 'app-' + appName.replace(/\s+/g, '-');
+                const appCard = document.getElementById(appId);
+                if (appCard) {
+                    appCard.classList.add('visited');
+                    const existingBadge = appCard.querySelector('.visited-badge');
+                    if (!existingBadge) {
+                        const badge = document.createElement('div');
+                        badge.style.marginTop = '10px';
+                        badge.innerHTML = '<span class="visited-badge">✓ Visited</span>';
+                        appCard.appendChild(badge);
+                    }
+                }
+                
+                updateProgress();
+            }
+        }
+        
+        // Update Progress
+        function updateProgress() {
+            const totalApps = Object.values(apps).flat().length;
+            const visitedCount = visitedApps.length;
+            const percentage = Math.round((visitedCount / totalApps) * 100);
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${visitedCount} of ${totalApps} apps explored (${percentage}%)`;
+            document.getElementById('visitedApps').textContent = visitedCount;
+        }
+        
+        // Reset Progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset your progress?')) {
+                visitedApps = [];
+                localStorage.setItem('ngl_visited_apps', JSON.stringify(visitedApps));
+                renderAllApps();
+                updateProgress();
+            }
+        }
+        
+        // Search Apps
+        function searchApps() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (!query) {
+                renderAllApps();
+                return;
+            }
+            
+            Object.keys(apps).forEach(category => {
+                const filteredApps = apps[category].filter(app => 
+                    app.name.toLowerCase().includes(query) ||
+                    app.description.toLowerCase().includes(query) ||
+                    app.tags.some(tag => tag.toLowerCase().includes(query))
+                );
+                renderApps(category, filteredApps);
+            });
+        }
+        
+        // Open All Unvisited Apps
+        function openAllApps() {
+            const allApps = Object.values(apps).flat();
+            const unvisited = allApps.filter(app => !visitedApps.includes(app.name));
+            
+            if (unvisited.length === 0) {
+                alert('You\'ve visited all apps! 🎉');
+                return;
+            }
+            
+            if (confirm(`Open ${unvisited.length} unvisited apps? This will open multiple tabs.`)) {
+                unvisited.forEach((app, index) => {
+                    setTimeout(() => {
+                        window.open(app.url, '_blank');
+                        markVisited(app.name);
+                    }, index * 500);
+                });
+            }
+        }
+        
+        // Share on Warpcast
+        function shareOnWarpcast() {
+            const totalApps = Object.values(apps).flat().length;
+            const visitedCount = visitedApps.length;
+            const text = `I've explored ${visitedCount}/${totalApps} gasless mini-apps in the No_Gas_Labs™ Matrix 2026! 🚀 #00ff99`;
+            const url = 'https://no-gas-labs-official.github.io/nogas-matrix-2026';
+            
+            const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(url)}`;
+            window.open(shareUrl, '_blank');
+        }
+        
+        // Modal Functions
+        function closeModal() {
+            document.getElementById('welcomeModal').classList.remove('active');
+        }
+        
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchApps();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "version": "next",
+  "homeUrl": "https://no-gas-labs-official.github.io/nogas-matrix-2026",
+  "accountAssociation": {"type": "address", "contract": "0x00000000fc76751f3e05e22f3e7350ad431e27c9", "network": "eip155:8453"},
+  "frames": [{
+    "version": "vNext",
+    "name": "No_Gas_Labs™ Matrix",
+    "iconUrl": "https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png",
+    "homeUrl": "https://no-gas-labs-official.github.io/nogas-matrix-2026",
+    "imageUrl": "https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png",
+    "buttonTitle": "Open Matrix",
+    "splashImageUrl": "https://no-gas-labs-official.github.io/nogas-matrix-2026/matrix-preview.png",
+    "splashBackgroundColor": "#0a0a0a"
+  }]
+}

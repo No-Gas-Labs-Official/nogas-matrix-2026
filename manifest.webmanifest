@@ -1,0 +1,11 @@
+{
+  "name": "No_Gas_Labs™ Mini-App Matrix 2026",
+  "short_name": "NGL Matrix",
+  "description": "Discover 65+ gasless mini-apps on Base & Farcaster",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
+  "icons": [{"src": "/matrix-preview.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any maskable"}]
+}
